@@ -1,0 +1,122 @@
+/* ---------- Colour and font variables ---------- */
+:root {
+  --ink: #14262b;        /* main text, deep blue-green */
+  --teal: #1f6f6b;       /* primary colour */
+  --marigold: #e0a526;   /* accent, used sparingly */
+  --paper: #f3f6f4;      /* page background */
+  --white: #ffffff;
+  --muted: #5a6b6e;
+  --heading-font: "Fraunces", Georgia, serif;
+  --body-font: "Work Sans", Arial, sans-serif;
+}
+
+/* ---------- Element selectors: base styles ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+h2 { font-size: 1.9rem; color: var(--teal); }
+h3 { font-size: 1.2rem; }
+
+a { color: var(--teal); }
+a:hover { color: var(--ink); }
+
+/* ---------- Navigation bar (flexbox + sticky positioning) ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 2rem;
+  background: var(--ink);
+}
+.navbar ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+}
+.navbar a:hover { color: var(--marigold); }
+.brand {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* ---------- Hero (ID selector) ---------- */
+#home {
+  padding: 6rem 2rem 5rem;
+  text-align: center;
+  color: var(--white);
+  background: var(--teal);
+  border-bottom: 6px solid var(--marigold);
+}
+.tagline {
+  max-width: 36rem;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+/* ---------- Sections (centred, readable width) ---------- */
+main {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 1rem 2rem 3rem;
+}
+main section { padding: 2.5rem 0 1rem; }
+main section p { max-width: 42rem; }
+
+/* ---------- Cards (CSS grid) ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  background: var(--white);
+  padding: 1.4rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--teal);
+}
+.card p { margin: 0; }
+.card .meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--white);
+  background: var(--ink);
+}
+footer p { margin: 0; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .navbar { flex-direction: column; gap: 0.5rem; }
+  .navbar ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+}
