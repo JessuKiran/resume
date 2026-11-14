@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jessu Kiran – Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. Colour palette and fonts (change them here) ===== */
+:root {
+  color-scheme: light;
+  --bg: #EDF1F4;
+  --surface: #FFFFFF;
+  --ink: #16233B;
+  --muted: #53627A;
+  --line: #CBD5E0;
+  --accent: #2D5BE3;
+  --accent-ink: #FFFFFF;
+  --tag: #DCE6FB;
+  --heading-font: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body-font: "Newsreader", Georgia, serif;
+  --nav-height: 3.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0F1624; --surface: #172033; --ink: #E8EDF7; --muted: #9AA8C0;
+    --line: #2A3752; --accent: #7FA0FF; --accent-ink: #0F1624; --tag: #22304F;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0F1624; --surface: #172033; --ink: #E8EDF7; --muted: #9AA8C0;
+  --line: #2A3752; --accent: #7FA0FF; --accent-ink: #0F1624; --tag: #22304F;
+}
+
+/* ===== 2. Element selectors: base styles ===== */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 1rem); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+h1, h2, h3 { font-family: var(--heading-font); margin: 0; line-height: 1.1; }
+h1 { font-size: clamp(2.6rem, 6vw, 3.75rem); font-weight: 800; letter-spacing: -0.03em; }
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--ink);
+}
+h3 { font-size: 1.15rem; font-weight: 700; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===== 3. Navigation bar (flexbox + sticky positioning) ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.navbar ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar a {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+}
+.navbar a:hover { border-bottom-color: var(--accent); }
+.navbar .brand { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em; }
+
+/* ===== 4. Page layout (CSS grid: sidebar + main) ===== */
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+aside {
+  position: sticky;
+  top: calc(var(--nav-height) + 1.5rem);
+}
+main { display: grid; gap: 3rem; }
+
+/* ===== 5. Sidebar: intro, contact, buttons ===== */
+.role { font-size: 1.3rem; font-style: italic; color: var(--muted); margin: 0.6rem 0 1.5rem; }
+.about { margin: 0 0 1.75rem; max-width: 34ch; }
+.contact {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 1rem;
+}
+.contact span { display: inline-block; min-width: 5.2rem; color: var(--muted); }
+
+.btns { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.btn {
+  font: 700 0.95rem var(--heading-font);
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.alt { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+
+/* ===== 6. Education timeline ===== */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+  border-left: 2px solid var(--line);
+  display: grid;
+  gap: 2rem;
+}
+.job { position: relative; }
+.job::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.6rem - 7px);
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.meta { color: var(--muted); font-size: 1rem; margin: 0.2rem 0 0; }
+
+/* ===== 7. Cards (course + project) ===== */
+.project {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+}
+.project h3 { margin-bottom: 0.4rem; }
+.project p { margin: 0 0 0.8rem; max-width: 62ch; }
+.project p:last-child { margin-bottom: 0; }
+
+/* ===== 8. Tags ===== */
+.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; list-style: none; margin: 0; padding: 0; }
+.tags li {
+  background: var(--tag);
+  color: var(--ink);
+  font: 500 0.9rem var(--heading-font);
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+}
+
+/* ===== 9. Footer ===== */
+footer {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.95rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+/* ===== 10. Small screens ===== */
+@media (max-width: 820px) {
+  .wrap { grid-template-columns: 1fr; }
+  aside { position: static; }
+}
+@media (max-width: 560px) {
+  .navbar { height: auto; padding: 0.7rem 1.25rem; flex-direction: column; gap: 0.4rem; }
+  .navbar ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  html { scroll-padding-top: 6rem; }
+}
+
+/* ===== 11. Print / Save as PDF ===== */
+@media print {
+  :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #333; --line: #999; }
+  .navbar, .btns { display: none; }
+  aside { position: static; }
+  .wrap { grid-template-columns: 260px 1fr; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" aria-label="Main">
+  <a class="brand" href="#top">Jessu Kiran</a>
+  <ul>
+    <li><a href="#edu">Education</a></li>
+    <li><a href="#course">Course</a></li>
+    <li><a href="#proj">Projects</a></li>
+    <li><a href="#lang">Languages</a></li>
+  </ul>
+</nav>
+
+<div class="wrap" id="top">
+  <aside>
+    <h1>Jessu Kiran</h1>
+    <p class="role">Student of planning, learning to build for the web</p>
+    <p class="about">First-year Bachelor of Planning student at the School of Planning and Architecture, Bhopal. I am also taking an online course at IIM Bangalore and working on a website development project.</p>
+    <ul class="contact">
+      <li><span>Email</span><a href="mailto:cheekatij26@iimb.ac.in">cheekatij26@iimb.ac.in</a></li>
+      <li><span>GitHub</span><a href="https://github.com/JessuKiran">github.com/JessuKiran</a></li>
+    </ul>
+    <div class="btns">
+      <a class="btn" href="mailto:cheekatij26@iimb.ac.in">Email me</a>
+      <button class="btn alt" id="print" type="button">Save as PDF</button>
+      <button class="btn alt" id="theme" type="button">Switch theme</button>
+    </div>
+  </aside>
+
+  <main>
+    <section id="edu" aria-labelledby="edu-title">
+      <h2 id="edu-title">Education</h2>
+      <ol class="timeline">
+        <li class="job">
+          <h3>Bachelor of Planning (B.Plan), first year</h3>
+          <p class="meta">School of Planning and Architecture, Bhopal. Currently studying</p>
+        </li>
+        <li class="job">
+          <h3>Class 12</h3>
+          <p class="meta">Narayana Junior College</p>
+        </li>
+        <li class="job">
+          <h3>Class 10</h3>
+          <p class="meta">Akshara Vaagdevi International School</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="course" aria-labelledby="course-title">
+      <h2 id="course-title">Alternative course</h2>
+      <article class="project">
+        <h3>Online course at IIM Bangalore</h3>
+        <p>Taken alongside my B.Plan studies. Currently in progress.</p>
+      </article>
+    </section>
+
+    <section id="proj" aria-labelledby="proj-title">
+      <h2 id="proj-title">Projects</h2>
+      <article class="project">
+        <h3>Website development project</h3>
+        <p>I am currently building a website as a hands-on way to learn web development. You can follow my work on GitHub.</p>
+        <ul class="tags"><li>In progress</li><li>Web development</li></ul>
+      </article>
+    </section>
+
+    <section id="lang" aria-labelledby="lang-title">
+      <h2 id="lang-title">Languages</h2>
+      <ul class="tags"><li>English: fluent</li><li>Telugu: fluent</li><li>Hindi: moderate</li></ul>
+    </section>
+  </main>
+
+  <footer>Jessu Kiran. Contact: cheekatij26@iimb.ac.in</footer>
+</div>
+
+<script>
+document.getElementById('print').addEventListener('click', function () { window.print(); });
+document.getElementById('theme').addEventListener('click', function () {
+  var r = document.documentElement;
+  var dark = r.getAttribute('data-theme') === 'dark' ||
+    (r.getAttribute('data-theme') !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+</script>
+</body>
+</html>
